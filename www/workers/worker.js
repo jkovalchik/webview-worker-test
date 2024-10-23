@@ -1,6 +1,6 @@
 onmessage = function (e) {
-    const data = e.data;
-    console.log('Worker recieved data from app:', data);
+    console.log('Worker recieved data from app:', e.data);
+    postMessage('pong');
 };
 
 onerror = function (err) {

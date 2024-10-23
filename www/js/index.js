@@ -29,14 +29,16 @@ const app = {
         app.worker = new Worker('workers/worker.js');
 
         app.worker.onmessage = function (e) {
-            // get data
-            const data = e.data;
-            console.log('App recieved data from worker:', data);
+            console.log('App recieved data from worker:', e.data);
         };
 
         app.worker.onerror = function (err) {
             console.error('Worker error in app:', err);
         };
+
+        document.querySelector('#ping').addEventListener('click', () => {
+            app.worker.postMessage('ping');
+        })
     }
 };
 
